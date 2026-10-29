@@ -3,3 +3,8 @@ dist
 .env
 *.db
 src/generated
+
+.agents/
+.claude/
+.windsurf/
+skills-lock.json
