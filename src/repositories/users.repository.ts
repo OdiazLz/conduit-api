@@ -9,8 +9,6 @@ type UserUpdateData = {
 	image?: string | null;
 };
 
-// Finds a user matching any of the given fields. Empty/undefined fields are ignored:
-// `{ id: undefined }` inside an OR would otherwise match every row.
 export async function getUser(email: string, username: string, userId?: number) {
 	const conditions: Prisma.UserWhereInput[] = [];
 	if (email) conditions.push({ email });
@@ -22,7 +20,6 @@ export async function getUser(email: string, username: string, userId?: number) 
 	return prisma.user.findFirst({ where: { OR: conditions } });
 }
 
-// Finds a user other than `userId` that already has the given email or username.
 export async function findOtherUser(userId: number, email?: string, username?: string) {
 	const conditions: Prisma.UserWhereInput[] = [];
 	if (email) conditions.push({ email });

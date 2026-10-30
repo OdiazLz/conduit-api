@@ -1,11 +1,5 @@
 import { z } from "zod";
-
-const requiredText = () =>
-	z
-		.string({
-			error: "can't be blank",
-		})
-		.min(1, "can't be blank");
+import { requiredText } from "./common";
 
 export const registerSchema = z.object({
 	username: requiredText(),
@@ -30,14 +24,3 @@ export const updateUserSchema = z.object({
 	bio: nullableText,
 	image: nullableText,
 });
-
-export function formatZodErrors(error: z.ZodError) {
-	const errors: Record<string, string[]> = {};
-
-	for (const issue of error.issues) {
-		const field = issue.path.join(".");
-		if (field) (errors[field] ??= []).push(issue.message);
-	}
-
-	return { errors };
-}

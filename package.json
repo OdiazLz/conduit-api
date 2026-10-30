@@ -1,7 +1,7 @@
 {
   "name": "conduit-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "RealWorld (Conduit) backend: auth + articles. Node + TypeScript + Express + Prisma + SQLite.",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -11,14 +11,15 @@
     "db:generate": "prisma generate",
     "start": "tsx src/server.ts",
     "postinstall": "prisma generate",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "test:api": "bash scripts/run-api-tests.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@prisma/adapter-better-sqlite3": "7.10.1",
     "@prisma/client": "7.10.1",
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^13.0.3",
@@ -33,7 +34,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.6",
     "@types/supertest": "^7.2.1",
-    "prisma": "^7.10.1",
+    "prisma": "7.10.1",
     "supertest": "^7.3.1",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
